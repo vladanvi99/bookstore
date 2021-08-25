@@ -5,10 +5,13 @@ import {
 } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './book.scss';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../../../redux/books/books';
 
-const Book = ({ bookInfo }) => {
+const Book = ({ bookInfo, progress }) => {
+  const dispatch = useDispatch();
   const {
-    name, category, progress,
+    id, name, category,
   } = bookInfo;
   return (
     <div className="card-wrap">
@@ -19,7 +22,7 @@ const Book = ({ bookInfo }) => {
           <p className="author">Unknown</p>
           <div className="book-options">
             <button type="button">Comments</button>
-            <button type="button">Remove</button>
+            <button onClick={() => dispatch(removeBook(id))} type="button">Remove</button>
             <button type="button">Edit</button>
           </div>
         </div>
