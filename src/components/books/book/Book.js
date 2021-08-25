@@ -8,7 +8,7 @@ import './book.scss';
 
 const Book = ({ bookInfo }) => {
   const {
-    name, author, category, progress, chapter,
+    name, category, progress,
   } = bookInfo;
   return (
     <div className="card-wrap">
@@ -16,7 +16,7 @@ const Book = ({ bookInfo }) => {
         <div className="left">
           <p className="category">{category}</p>
           <h3>{name}</h3>
-          <p className="author">{author}</p>
+          <p className="author">Unknown</p>
           <div className="book-options">
             <button type="button">Comments</button>
             <button type="button">Remove</button>
@@ -38,7 +38,7 @@ const Book = ({ bookInfo }) => {
       </div>
       <div className="end">
         <p className="current-chapter">CURRENT CHAPTER</p>
-        <p className="chapter-name">{chapter}</p>
+        <p className="chapter-name">Unknown</p>
       </div>
     </div>
   );
