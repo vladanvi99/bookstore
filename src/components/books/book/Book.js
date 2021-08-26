@@ -11,15 +11,15 @@ import { removeBook } from '../../../redux/books/books';
 const Book = ({ bookInfo, progress }) => {
   const dispatch = useDispatch();
   const {
-    id, name, category,
+    id, name, author,
   } = bookInfo;
   return (
     <div className="card-wrap">
       <div className="start">
         <div className="left">
-          <p className="category">{category}</p>
+          <p className="category">Action, Adventure, Comedy</p>
           <h3>{name}</h3>
-          <p className="author">Unknown</p>
+          <p className="author">{author}</p>
           <div className="book-options">
             <button type="button">Comments</button>
             <button onClick={() => dispatch(removeBook(id))} type="button">Remove</button>
@@ -41,7 +41,7 @@ const Book = ({ bookInfo, progress }) => {
       </div>
       <div className="end">
         <p className="current-chapter">CURRENT CHAPTER</p>
-        <p className="chapter-name">Unknown</p>
+        <p className="chapter-name">Chapter 1</p>
       </div>
     </div>
   );

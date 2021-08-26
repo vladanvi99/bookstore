@@ -8,7 +8,7 @@ const AddNewBook = () => {
   const [bookInfo, setBookInfo] = useState({
     id: uuidv4(),
     name: '',
-    category: 'Action',
+    author: '',
   });
   const handleChange = (name) => (e) => {
     setBookInfo({ ...bookInfo, [name]: e.target.value });
@@ -27,12 +27,7 @@ const AddNewBook = () => {
       <h2>ADD NEW BOOK</h2>
       <form onSubmit={(e) => onSubmit(e)}>
         <input onChange={handleChange('name')} type="text" name="name" placeholder="Book title" value={bookInfo.name} />
-        <select onChange={handleChange('category')} name="category">
-          <option value="Action">Action</option>
-          <option value="Drama">Drama</option>
-          <option value="Comedy">Comedy</option>
-          <option value="Adventure">Adventure</option>
-        </select>
+        <input onChange={handleChange('author')} type="text" name="author" placeholder="Author name" value={bookInfo.author} />
         <button onClick={onClick} type="submit">ADD BOOK</button>
       </form>
     </section>
