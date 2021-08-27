@@ -15,7 +15,7 @@ const Books = () => {
     <div className="books-page">
       <ul className="book-list">
         {books.map((book) => (
-          <li key={book.item_id} className="book-card">
+          <li key={book.id} className="book-card">
             <Book bookInfo={book} progress={Math.floor(Math.random() * 101)} />
           </li>
         ))}

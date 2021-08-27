@@ -1,5 +1,7 @@
-/* eslint-disable no-restricted-syntax, camelcase */
+/* eslint-disable */
 import axios from 'axios';
+import { URL } from '../../api/api';
+import { PASSWORD } from '../../api/api';
 
 const CREATE_BOOK = 'bookstore/books/create';
 const REMOVE_BOOK = 'bookstore/books/remove';
@@ -10,10 +12,10 @@ const initialState = {
 
 // FUNCTIONS
 const postBook = (book) => {
-  axios.post('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/rbDKW7ybsIFhF7AZ4nxB/books', book);
+  axios.post(`${URL}${PASSWORD}/books`, book);
 };
 const deleteBook = (id) => {
-  axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/rbDKW7ybsIFhF7AZ4nxB/books/${id}`);
+  axios.delete(`${URL}${PASSWORD}/books/${id}`);
 };
 // ACTIONS
 export const createBook = (book) => ({
@@ -29,15 +31,15 @@ export const getBooks = (books) => ({
   payload: books,
 });
 export const fetchBooks = () => (dispatch) => {
-  axios.get('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/rbDKW7ybsIFhF7AZ4nxB/books')
+  axios.get(`${URL}${PASSWORD}/books`)
     .then((response) => {
       const books = [];
       const { data } = response;
       for (const [key, value] of Object.entries(data)) {
-        const item_id = key;
+        const id = key;
         const bookInfo = value[0];
         const book = {
-          item_id,
+          item_id: id,
           title: bookInfo.title,
           category: bookInfo.category,
         };
