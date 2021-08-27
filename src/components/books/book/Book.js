@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types, camelcase */
 import React from 'react';
 import {
   CircularProgressbar,
@@ -11,18 +11,18 @@ import { removeBook } from '../../../redux/books/books';
 const Book = ({ bookInfo, progress }) => {
   const dispatch = useDispatch();
   const {
-    id, name, author,
+    item_id, title, category,
   } = bookInfo;
   return (
     <div className="card-wrap">
       <div className="start">
         <div className="left">
           <p className="category">Action, Adventure, Comedy</p>
-          <h3>{name}</h3>
-          <p className="author">{author}</p>
+          <h3>{title}</h3>
+          <p className="author">{category}</p>
           <div className="book-options">
             <button type="button">Comments</button>
-            <button onClick={() => dispatch(removeBook(id))} type="button">Remove</button>
+            <button onClick={() => dispatch(removeBook(item_id))} type="button">Remove</button>
             <button type="button">Edit</button>
           </div>
         </div>
