@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AddNewBook from './addNewBook/AddNewBook';
 import Book from './book/Book';
 import { fetchBooks } from '../../redux/books/books';
+import './books.scss';
 
 const Books = () => {
   const dispatch = useDispatch();
