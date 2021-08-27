@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   CircularProgressbar,
@@ -6,6 +5,7 @@ import {
 import 'react-circular-progressbar/dist/styles.css';
 import './book.scss';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { removeBook } from '../../../redux/books/books';
 
 const Book = ({ bookInfo, progress }) => {
@@ -45,6 +45,11 @@ const Book = ({ bookInfo, progress }) => {
       </div>
     </div>
   );
+};
+
+Book.propTypes = {
+  bookInfo: PropTypes.objectOf.isRequired,
+  progress: PropTypes.string.isRequired,
 };
 
 export default Book;

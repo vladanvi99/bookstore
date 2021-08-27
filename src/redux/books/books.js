@@ -1,7 +1,5 @@
-/* eslint-disable */
 import axios from 'axios';
-import { URL } from '../../api/api';
-import { PASSWORD } from '../../api/api';
+import { URL, PASSWORD } from '../../api/api';
 
 const CREATE_BOOK = 'bookstore/books/create';
 const REMOVE_BOOK = 'bookstore/books/remove';
@@ -35,7 +33,7 @@ export const fetchBooks = () => (dispatch) => {
     .then((response) => {
       const books = [];
       const { data } = response;
-      for (const [key, value] of Object.entries(data)) {
+      Object.entries(data).forEach(([key, value]) => {
         const id = key;
         const bookInfo = value[0];
         const book = {
@@ -44,7 +42,7 @@ export const fetchBooks = () => (dispatch) => {
           category: bookInfo.category,
         };
         books.push(book);
-      }
+      });
       dispatch(getBooks(books));
     });
 };
